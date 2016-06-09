@@ -5,24 +5,43 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--State List Table View Controller-->
         <scene sceneID="ydh-eg-kbL">
             <objects>
-                <tableViewController id="SrQ-Xi-fj2" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dnp-WD-vzb">
+                <tableViewController id="SrQ-Xi-fj2" customClass="StateListTableViewController" customModule="Representative" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="182" sectionHeaderHeight="28" sectionFooterHeight="28" id="dnp-WD-vzb">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X7l-4i-WPT">
+                            <rect key="frame" x="0.0" y="274" width="600" height="62"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Submit">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" red="0.1829732439" green="0.96969696969999997" blue="0.96836433190000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                        </button>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Fhz-eK-7Ju">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="repCell" selectionStyle="default" indentationWidth="10" rowHeight="182" id="Fhz-eK-7Ju" customClass="RepresentativeTableViewCell" customModule="Representative" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="182"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Fhz-eK-7Ju" id="s5L-cO-DjU">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="181"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A4K-de-WpF">
+                                            <rect key="frame" x="8" y="0.0" width="584" height="181"/>
+                                        </pickerView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="A4K-de-WpF" secondAttribute="bottom" id="8l1-W7-fbK"/>
+                                        <constraint firstAttribute="trailing" secondItem="A4K-de-WpF" secondAttribute="trailing" id="NDs-nv-UJ6"/>
+                                        <constraint firstItem="A4K-de-WpF" firstAttribute="leading" secondItem="s5L-cO-DjU" secondAttribute="leading" id="cxc-QQ-knu"/>
+                                        <constraint firstItem="A4K-de-WpF" firstAttribute="top" secondItem="s5L-cO-DjU" secondAttribute="top" id="kui-m8-yee"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="RvW-bi-ML3" kind="show" id="qlk-lY-Eqz"/>
+                                    <segue destination="RvW-bi-ML3" kind="show" identifier="toRep" id="qlk-lY-Eqz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -34,7 +53,7 @@
                     <navigationItem key="navigationItem" id="2Dw-kV-9eG">
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="wfY-xm-jZI">
                             <connections>
-                                <segue destination="RvW-bi-ML3" kind="show" id="S1b-wc-krN"/>
+                                <segue destination="RvW-bi-ML3" kind="show" identifier="fromRep" id="S1b-wc-krN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -43,10 +62,10 @@
             </objects>
             <point key="canvasLocation" x="1010" y="495"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Rep List Table View Controller-->
         <scene sceneID="Nvg-6N-foe">
             <objects>
-                <tableViewController id="RvW-bi-ML3" sceneMemberID="viewController">
+                <tableViewController id="RvW-bi-ML3" customClass="RepListTableViewController" customModule="Representative" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vqS-OO-RUC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -91,6 +110,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qlk-lY-Eqz"/>
+        <segue reference="S1b-wc-krN"/>
     </inferredMetricsTieBreakers>
 </document>
